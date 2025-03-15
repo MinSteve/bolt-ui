@@ -1,0 +1,614 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Soft color palette */
+  --soft-blue-50: #f0f7ff;
+  --soft-blue-100: #e0f0ff;
+  --soft-blue-200: #c0e0ff;
+  --soft-blue-500: #3b82f6;
+  --soft-blue-600: #2563eb;
+  
+  --soft-green-50: #f0fdf4;
+  --soft-green-100: #dcfce7;
+  --soft-green-500: #22c55e;
+  --soft-green-600: #16a34a;
+  
+  --soft-purple-50: #faf5ff;
+  --soft-purple-100: #f3e8ff;
+  --soft-purple-500: #a855f7;
+  --soft-purple-600: #9333ea;
+  
+  --soft-yellow-50: #fffbeb;
+  --soft-yellow-100: #fef3c7;
+  --soft-yellow-500: #eab308;
+  
+  --soft-red-50: #fef2f2;
+  --soft-red-100: #fee2e2;
+  --soft-red-500: #ef4444;
+  
+  --soft-pink-50: #fdf2f8;
+  --soft-pink-100: #fce7f3;
+  --soft-pink-200: #fbcfe8;
+  --soft-pink-300: #f9a8d4;
+  --soft-pink-500: #ec4899;
+  --soft-pink-600: #db2777;
+  
+  --soft-gray-50: #f9fafb;
+  --soft-gray-100: #f3f4f6;
+  --soft-gray-200: #e5e7eb;
+  --soft-gray-300: #d1d5db;
+  --soft-gray-600: #4b5563;
+  --soft-gray-700: #374151;
+  --soft-gray-800: #1f2937;
+  --soft-gray-900: #111827;
+}
+
+/* Course section background */
+.course-section-bg {
+  background: linear-gradient(90deg, rgba(30, 64, 175, 0.95) 0%, rgba(37, 99, 235, 0.9) 100%);
+  position: relative;
+}
+
+.course-section-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Course blocks */
+.course-block {
+  position: absolute;
+  background-color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #1e40af;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.course-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.course-block-1 {
+  right: 10%;
+  top: 15%;
+}
+
+.course-block-2 {
+  right: 25%;
+  top: 35%;
+}
+
+.course-block-3 {
+  right: 15%;
+  top: 55%;
+}
+
+.course-block-4 {
+  right: 30%;
+  top: 75%;
+}
+
+.course-block-5 {
+  right: 5%;
+  bottom: 15%;
+}
+
+/* Open Source Grid */
+.open-source-grid {
+  display: grid;
+  grid-template-areas:
+    "transformers transformers diffusers safetensors"
+    "transformers transformers hub tokenizers"
+    "transformersjs trl smolagents smolagents";
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, minmax(100px, auto));
+}
+
+@media (max-width: 768px) {
+  .open-source-grid {
+    grid-template-areas:
+      "transformers transformers"
+      "diffusers safetensors"
+      "hub tokenizers"
+      "transformersjs trl"
+      "smolagents smolagents";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, minmax(100px, auto));
+  }
+}
+
+.open-source-card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.open-source-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Open Source Section Background */
+.open-source-section {
+  background: radial-gradient(circle at center, var(--soft-pink-50) 0%, white 70%);
+  position: relative;
+}
+
+.transformers { grid-area: transformers; }
+.diffusers { grid-area: diffusers; }
+.safetensors { grid-area: safetensors; }
+.hub { grid-area: hub; }
+.tokenizers { grid-area: tokenizers; }
+.trl { grid-area: trl; }
+.transformersjs { grid-area: transformersjs; }
+.smolagents { grid-area: smolagents; }
+
+/* Navigation active indicator */
+.nav-item {
+  position: relative;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2563eb;
+}
+
+/* Hide scrollbar for tab navigation while allowing scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Soft color styles for UI elements */
+.soft-card {
+  background-color: var(--soft-gray-50);
+  border: 1px solid var(--soft-gray-200);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-in-out;
+}
+
+.soft-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Soft backgrounds */
+.soft-bg-blue {
+  background-color: var(--soft-blue-50);
+}
+
+.soft-bg-green {
+  background-color: var(--soft-green-50);
+}
+
+.soft-bg-purple {
+  background-color: var(--soft-purple-50);
+}
+
+.soft-bg-yellow {
+  background-color: var(--soft-yellow-50);
+}
+
+.soft-bg-red {
+  background-color: var(--soft-red-50);
+}
+
+.soft-bg-pink {
+  background-color: var(--soft-pink-50);
+}
+
+.soft-bg-gray {
+  background-color: var(--soft-gray-50);
+}
+
+/* Soft borders */
+.soft-border-blue {
+  border: 1px solid var(--soft-blue-200);
+}
+
+.soft-border-green {
+  border: 1px solid var(--soft-green-100);
+}
+
+.soft-border-purple {
+  border: 1px solid var(--soft-purple-100);
+}
+
+.soft-border-pink {
+  border: 1px solid var(--soft-pink-200);
+}
+
+/* Soft text colors */
+.soft-text-blue {
+  color: var(--soft-blue-600);
+}
+
+.soft-text-green {
+  color: var(--soft-green-600);
+}
+
+.soft-text-purple {
+  color: var(--soft-purple-600);
+}
+
+.soft-text-pink {
+  color: var(--soft-pink-600);
+}
+
+/* Soft badges */
+.soft-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.soft-badge-blue {
+  background-color: var(--soft-blue-100);
+  color: var(--soft-blue-600);
+  border: 1px solid var(--soft-blue-200);
+}
+
+.soft-badge-green {
+  background-color: var(--soft-green-100);
+  color: var(--soft-green-600);
+  border: 1px solid var(--soft-green-100);
+}
+
+.soft-badge-purple {
+  background-color: var(--soft-purple-100);
+  color: var(--soft-purple-600);
+  border: 1px solid var(--soft-purple-100);
+}
+
+.soft-badge-yellow {
+  background-color: var(--soft-yellow-100);
+  color: var(--soft-yellow-500);
+  border: 1px solid var(--soft-yellow-100);
+}
+
+.soft-badge-pink {
+  background-color: var(--soft-pink-100);
+  color: var(--soft-pink-600);
+  border: 1px solid var(--soft-pink-200);
+}
+
+/* Soft buttons */
+.soft-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.soft-btn-blue {
+  background-color: var(--soft-blue-100);
+  color: var(--soft-blue-600);
+}
+
+.soft-btn-blue:hover {
+  background-color: var(--soft-blue-200);
+}
+
+.soft-btn-green {
+  background-color: var(--soft-green-100);
+  color: var(--soft-green-600);
+}
+
+.soft-btn-green:hover {
+  background-color: var(--soft-green-100);
+  filter: brightness(0.95);
+}
+
+.soft-btn-pink {
+  background-color: var(--soft-pink-100);
+  color: var(--soft-pink-600);
+}
+
+.soft-btn-pink:hover {
+  background-color: var(--soft-pink-200);
+}
+
+/* Soft shadows */
+.soft-shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 1px 6px rgba(0, 0, 0, 0.02);
+}
+
+.soft-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03), 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.soft-shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 2px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Soft gradients */
+.soft-gradient-blue {
+  background: linear-gradient(135deg, var(--soft-blue-50) 0%, var(--soft-blue-100) 100%);
+}
+
+.soft-gradient-green {
+  background: linear-gradient(135deg, var(--soft-green-50) 0%, var(--soft-green-100) 100%);
+}
+
+.soft-gradient-purple {
+  background: linear-gradient(135deg, var(--soft-purple-50) 0%, var(--soft-purple-100) 100%);
+}
+
+.soft-gradient-pink {
+  background: linear-gradient(135deg, var(--soft-pink-50) 0%, var(--soft-pink-100) 100%);
+}
+
+/* Soft header backgrounds */
+.soft-header-bg {
+  background-color: var(--soft-gray-50);
+  border-bottom: 1px solid var(--soft-gray-200);
+}
+
+/* Soft article styles */
+.soft-article-header {
+  background-color: var(--soft-gray-50);
+  border-bottom: 1px solid var(--soft-gray-100);
+}
+
+.soft-article-toc {
+  background-color: var(--soft-gray-50);
+  border-radius: 0.75rem;
+  border: 1px solid var(--soft-gray-200);
+  padding: 1.25rem;
+}
+
+.soft-article-content {
+  line-height: 1.7;
+}
+
+.soft-article-content h2 {
+  color: var(--soft-gray-900);
+  margin-top: 2rem;
+}
+
+.soft-article-content p {
+  color: var(--soft-gray-700);
+}
+
+.soft-article-code {
+  background-color: var(--soft-gray-50);
+  border: 1px solid var(--soft-gray-200);
+  border-radius: 0.5rem;
+}
+
+/* Soft tutorial series list */
+.soft-series-list {
+  border-left: 2px solid var(--soft-gray-200);
+}
+
+.soft-series-item {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.soft-series-item.active {
+  border-left: 2px solid var(--soft-blue-500);
+  margin-left: -1px;
+}
+
+.soft-series-item.active .soft-series-title {
+  color: var(--soft-blue-600);
+  font-weight: 500;
+}
+
+.soft-series-title {
+  color: var(--soft-gray-700);
+  transition: color 0.2s ease;
+}
+
+.soft-series-title:hover {
+  color: var(--soft-blue-600);
+}
+
+/* Soft level indicators */
+.soft-level-beginner {
+  color: var(--soft-green-600);
+  background-color: var(--soft-green-50);
+  border: 1px solid var(--soft-green-100);
+}
+
+.soft-level-intermediate {
+  color: var(--soft-blue-600);
+  background-color: var(--soft-blue-50);
+  border: 1px solid var(--soft-blue-100);
+}
+
+.soft-level-advanced {
+  color: var(--soft-purple-600);
+  background-color: var(--soft-purple-50);
+  border: 1px solid var(--soft-purple-100);
+}
+
+/* Soft form elements */
+.soft-input {
+  background-color: var(--soft-gray-50);
+  border: 1px solid var(--soft-gray-200);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.soft-input:focus {
+  border-color: var(--soft-blue-200);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+/* Soft tabs */
+.soft-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--soft-gray-200);
+}
+
+.soft-tab {
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  color: var(--soft-gray-600);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.soft-tab:hover {
+  color: var(--soft-gray-900);
+}
+
+.soft-tab.active {
+  color: var(--soft-blue-600);
+  border-bottom-color: var(--soft-blue-500);
+}
+
+/* Soft event cards */
+.soft-event-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid var(--soft-gray-200);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.soft-event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+.soft-event-date {
+  color: var(--soft-gray-600);
+  font-size: 0.875rem;
+}
+
+.soft-event-type {
+  background-color: var(--soft-blue-50);
+  color: var(--soft-blue-600);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Soft course cards */
+.soft-course-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  border: 1px solid var(--soft-gray-200);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.soft-course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+.soft-course-image {
+  height: 160px;
+  object-fit: cover;
+}
+
+.soft-course-content {
+  padding: 1.25rem;
+}
+
+.soft-course-title {
+  font-weight: 600;
+  color: var(--soft-gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.soft-course-meta {
+  display: flex;
+  align-items: center;
+  color: var(--soft-gray-600);
+  font-size: 0.875rem;
+}
+
+.soft-course-rating {
+  display: flex;
+  align-items: center;
+  color: var(--soft-yellow-500);
+}
+
+/* Soft navigation */
+.soft-nav {
+  background-color: white;
+  border-bottom: 1px solid var(--soft-gray-100);
+}
+
+.soft-nav-link {
+  color: var(--soft-gray-600);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.soft-nav-link:hover {
+  color: var(--soft-gray-900);
+}
+
+.soft-nav-link.active {
+  color: var(--soft-blue-600);
+}
+
+/* Soft footer */
+.soft-footer {
+  background-color: var(--soft-gray-50);
+  border-top: 1px solid var(--soft-gray-100);
+  color: var(--soft-gray-600);
+}
+
+.soft-footer-heading {
+  color: var(--soft-gray-900);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.soft-footer-link {
+  color: var(--soft-gray-600);
+  transition: color 0.2s ease;
+}
+
+.soft-footer-link:hover {
+  color: var(--soft-blue-600);
+}
